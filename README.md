@@ -1,0 +1,1 @@
+# strings-pesquisa-2c
