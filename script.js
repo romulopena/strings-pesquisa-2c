@@ -5,13 +5,34 @@ function mostraPalavrasChave() {
     const texto = document.querySelector("#entrada-de-texto").value;
     const campoResultado = document.querySelector("#resultado-palavrachave");
     const palavrasChave = processaTexto(texto);
-    
+
     campoResultado.textContent = palavrasChave.join(", ");
-    
+
 }
 
-function processaTexto(texto){
+function processaTexto(texto) {
     let palavras = texto.split(/\P{L}+/u);
+    const frequencias = contaFrequencias(palavras);
+    let ordenadas = Object.keys(frequencias).sort(ordenaPalavra);
 
-    return palavras;
+    function ordenaPalavra(p1, p2){
+        return frequencias[p2] - [p1];
+    }
+    console.log(ordenadas);
+    return ordenadas.slice(0,10);
+}
+
+function contaFrequencias(palavras){
+    let frequencias = {};
+    for (let i of palavras) {
+        frequencias[i] = 0;
+
+        for (let j of palavras) {
+            if (palavras[i] == palavras[j]) {
+                frequencias[i]++;
+            }
+        }
+    }
+    
+    return frequencias;
 }
