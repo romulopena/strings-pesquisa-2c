@@ -1,0 +1,171 @@
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap");
+
+:root {
+  --cor-fundo: #080a10;
+  --cor-principal: #00c8ff; /* Azul ciano brilhante */
+  --cor-secundaria: #8a2be2; /* Roxo vibrante */
+  --cor-texto: #e0e0e0;
+  --cor-borda: #1a2233;
+}
+
+/* Reset básico e tipografia */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Orbitron", sans-serif; /* Fonte com visual futurista */
+  color: var(--cor-texto);
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+  background-color: var(--cor-fundo);
+  height: 100vh;
+  flex-direction: column;
+  background-image: radial-gradient(
+      circle at center,
+      rgba(0, 200, 255, 0.1),
+      transparent 80%
+    ),
+    radial-gradient(circle at top right, rgba(138, 43, 226, 0.1), transparent 80%);
+  background-size: 100% 100%;
+}
+
+.container {
+  display: flex;
+  width: 90%;
+  max-width: 65rem;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  padding: 2rem;
+  background: rgba(10, 10, 20, 0.4); /* Fundo semi-transparente */
+  border-radius: 15px;
+  border: 1px solid var(--cor-borda);
+  box-shadow: 0 0 30px rgba(0, 200, 255, 0.1);
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+}
+
+h1 {
+  color: var(--cor-principal);
+  text-align: center;
+  font-size: clamp(1.8rem, 5vw, 2.8rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  text-shadow: 0 0 10px var(--cor-principal), 0 0 20px var(--cor-principal);
+  animation: pulse 2s infinite ease-in-out;
+}
+
+#entrada-de-texto {
+  width: 100%;
+  height: 12rem;
+  padding: 1.4rem 2.5rem;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--cor-principal);
+  font-size: 1.5rem;
+  line-height: 1.5;
+  resize: vertical;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+#entrada-de-texto:focus {
+  border-color: var(--cor-secundaria);
+  box-shadow: 0 0 10px var(--cor-secundaria);
+}
+
+#entrada-de-texto::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+  font-weight: 300;
+}
+
+#botao-palavrachave {
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(
+    45deg,
+    var(--cor-principal),
+    var(--cor-secundaria)
+  );
+  color: #080a10; /* Texto escuro para contraste */
+  font-size: 1.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0, 200, 255, 0.5);
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+#botao-palavrachave:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 5px 15px rgba(0, 200, 255, 0.8);
+}
+
+#botao-palavrachave:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+#resultado-palavrachave {
+  width: 100%;
+  padding: 1.5rem;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--cor-secundaria);
+  color: var(--cor-texto);
+  font-size: 1.5rem;
+  line-height: 1.6;
+  text-align: center;
+  max-height: 50vh;
+  overflow: auto;
+  word-break: break-word;
+  box-shadow: 0 0 10px rgba(138, 43, 226, 0.5);
+  transition: all 0.5s ease;
+}
+
+/* Animação de brilho para o título */
+@keyframes pulse {
+  0%,
+  100% {
+    text-shadow: 0 0 10px var(--cor-principal), 0 0 20px var(--cor-principal),
+      0 0 30px var(--cor-principal);
+  }
+  50% {
+    text-shadow: 0 0 5px var(--cor-principal), 0 0 10px var(--cor-principal),
+      0 0 15px var(--cor-principal);
+  }
+}
+
+/* Estilização da barra de rolagem */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--cor-principal);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--cor-secundaria);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .container {
+    width: 95%;
+    padding: 1.5rem;
+    gap: 2rem;
+  }
+}
